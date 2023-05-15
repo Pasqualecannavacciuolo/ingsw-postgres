@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 FiraCode-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fmodern\fcharset0 Courier;\f4\fnil\fcharset0 .SFNSMono-Regular;}
+{\colortbl;\red255\green255\blue255;\red147\green139\blue5;\red0\green0\blue0;\red255\green255\blue255;
+\red252\green95\blue162;\red0\green0\blue0;\red255\green255\blue255;\red207\green190\blue104;\red109\green122\blue134;
+\red255\green255\blue255;\red64\green118\blue25;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c64268\c60430\c0;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c99955\c0;
+\cssrgb\c100000\c47838\c69603;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c99970\c85000;\cssrgb\c84989\c78565\c48130;\cssrgb\c49983\c55097\c59678;
+\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c30912\c52771\c12623;\cssrgb\c100000\c100000\c99970\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww31040\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs44 \cf0 [ Creazione Database PostgreSQL con Docker ]\
+\
+\cf2 Ottenere la cartella pgdata\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs36 \cf3 \cb4 \CocoaLigature0 \
+* Installare python\
+* Installare la seguente libreria con il seguente comando: pip install gdown\
+* Creare un file python <nomeFile>.py con il seguente contenuto\
+
+\f2\b\fs28 \cf5 \cb6 \CocoaLigature1 import
+\f0\b0 \cf7  gdown\
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f2\b \cf5 import
+\f0\b0 \cf7  shutil\
+\
+	url = \cf8 '\cf8 \cb3 https://drive.google.com/uc?id=1LyMD3u3O3y-iNJ8WXrQhlfZyMQLGa9-w\cf8 \cb6 '\cf7 \
+	out_path = \cf8 'pgdata.zip'\cf7 \
+	gdown.download(url, out_path, quiet=
+\f2\b \cf5 False
+\f0\b0 \cf7 )\
+\
+\cf9 	# Unzip\cf7 \
+	shutil.unpack_archive(\cf8 'pgdata.zip'\cf7 , \cf8 './'\cf7 )\
+\
+\cf9 	# Rimozione della cartella __MACOSX\cf7 \
+	shutil.rmtree(\cf8 './__MACOSX'\cf7 )\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs36 \cf3 \cb4 \CocoaLigature0 * Eseguire il file facendo attenzione a metterci nella cartella che lo contiene con il comando: python3 <nomeFile>.py
+\f0\fs44 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\cf2 Stringa di creazione\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\fs23\fsmilli11900 \cf3 \cb10 \expnd0\expndtw0\kerning0
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\fs36 \cf3 \cb4 \kerning1\expnd0\expndtw0 \CocoaLigature0 docker run --name INGSW-postgres -p 5432:5432 -e POSTGRES_PASSWORD=progetto123 -e \cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 POSTGRES_DB=ristorante -e POSTGRES_USER=pasquale \cb4 \kerning1\expnd0\expndtw0 \CocoaLigature0 -e PGDATA=/pgdata -v /Users/pasquale/Documents/Coding/Progetto_INGSW/pgdata:\cb1 \expnd0\expndtw0\kerning0
+\CocoaLigature1 /pgdata
+\f4  
+\f1 \cb4 \kerning1\expnd0\expndtw0 \CocoaLigature0 -d postgres\cf11 \cb12 \
+}
