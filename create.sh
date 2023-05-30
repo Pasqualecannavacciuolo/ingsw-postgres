@@ -39,7 +39,6 @@ mkdir data_folder
 cd data_folder
 git clone https://github.com/Pasqualecannavacciuolo/pgdata_repo.git
 cd pgdata_repo
-echo $(pwd)
 python3 ../../gdrive_pgdata.py
 DIR=pgdata
 if [ ! -d "$DIR" ];
@@ -52,15 +51,13 @@ fi
 # Setto la proprietà della cartella pgdata sull'attuale utente
 USER=$(whoami)
 sudo chown -R $USER pgdata
-cd .. ..
-
+cd ..
+cd ..
 
 echo "⌛️ Avvio del container 🐳Docker..."
 
 # Creo il container per PostgreSQL
-cd ..
 docker run --name INGSW-postgres-bash -p 5432:5432 -e POSTGRES_PASSWORD=progetto123 -e POSTGRES_DB=ristorante -e POSTGRES_USER=pasquale -e PGDATA=/pgdata -v $(pwd)/data_folder/pgdata_repo/pgdata:/pgdata -d postgres
-echo $(pwd)
 containerIsRunning=$(python3 container_is_running.py)
 if [ "$containerIsRunning" = "is running" ];
 then
